@@ -1,13 +1,6 @@
-using Code.Common.StaticData;
-using Code.Common.Time;
-using Code.Common.Windows;
-using Code.Infrastructure.AssetManagement;
 using Code.Infrastructure.Helpers;
-using Code.Infrastructure.Loading;
-using Code.Infrastructure.States.Factory;
 using Code.Infrastructure.States.GameStates;
 using Code.Infrastructure.States.StateMachine;
-using Code.Infrastructure.Systems;
 using Zenject;
 
 namespace Code.Infrastructure.Installers
@@ -18,31 +11,9 @@ namespace Code.Infrastructure.Installers
         {
             Container.BindInterfacesTo<BootstrapInstaller>().FromInstance(this).AsSingle();
 
-            BindInputService();
-            BindSystemFactory();
-            BindUIFactories();
             BindContexts();
-            BindGameplayServices();
             BindStateMachine();
-            BindStateFactory();
             BindGameStates();
-            BindCommonServices();
-            BindAssetManagementServices();
-        }
-
-        private void BindInputService()
-        {
-
-        }
-
-        private void BindSystemFactory()
-        {
-            Container.Bind<ISystemFactory>().To<SystemFactory>().AsSingle();
-        }
-
-        private void BindUIFactories()
-        {
-            Container.Bind<IWindowFactory>().To<WindowFactory>().AsSingle();
         }
 
         private void BindContexts()
@@ -54,19 +25,9 @@ namespace Code.Infrastructure.Installers
             Container.Bind<MetaContext>().FromInstance(Contexts.sharedInstance.meta).AsSingle();
         }
 
-        private void BindGameplayServices()
-        {
-            
-        }
-
         private void BindStateMachine()
         {
             Container.BindInterfacesAndSelfTo<GameStateMachine>().AsSingle();
-        }
-
-        private void BindStateFactory()
-        {
-            Container.BindInterfacesAndSelfTo<StateFactory>().AsSingle();
         }
 
         private void BindGameStates()
@@ -75,22 +36,9 @@ namespace Code.Infrastructure.Installers
             Container.BindInterfacesAndSelfTo<LoadingHomeScreenState>().AsSingle();
             Container.BindInterfacesAndSelfTo<HomeScreenState>().AsSingle();
             Container.BindInterfacesAndSelfTo<LoadingBattleState>().AsSingle();
-            Container.BindInterfacesAndSelfTo<BattleEnterState>().AsSingle();
-            Container.BindInterfacesAndSelfTo<BattleLoopState>().AsSingle();
+            Container.BindInterfacesAndSelfTo<GameEnterState>().AsSingle();
+            Container.BindInterfacesAndSelfTo<GameLoopState>().AsSingle();
             Container.BindInterfacesAndSelfTo<GameOverState>().AsSingle();
-        }
-
-        private void BindCommonServices()
-        {
-            Container.Bind<ITimeService>().To<UnityTimeService>().AsSingle();
-            Container.Bind<ISceneLoader>().To<SceneLoader>().AsSingle();
-            Container.Bind<IStaticDataService>().To<StaticDataService>().AsSingle();
-            Container.Bind<IWindowService>().To<WindowService>().AsSingle();
-        }
-
-        private void BindAssetManagementServices()
-        {
-            Container.Bind<IAssetProvider>().To<AssetProvider>().AsSingle();
         }
 
         public void Initialize()

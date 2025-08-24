@@ -3,11 +3,11 @@ using Code.Infrastructure.States.StateMachine;
 
 namespace Code.Infrastructure.States.GameStates
 {
-    public class BattleEnterState : SimpleState
+    public class GameEnterState : SimpleState
     {
         private readonly IGameStateMachine _stateMachine;
 
-        public BattleEnterState(
+        public GameEnterState(
           IGameStateMachine stateMachine)
         {
             _stateMachine = stateMachine;
@@ -17,7 +17,7 @@ namespace Code.Infrastructure.States.GameStates
         {
             PlaceHero();
 
-            _stateMachine.Enter<BattleLoopState>();
+            _stateMachine.Enter<GameLoopState>();
         }
 
         private void PlaceHero()

@@ -27,7 +27,7 @@ namespace Code.Infrastructure.States.GameStates
 
         private void EnterBattleLoopState()
         {
-            _stateMachine.Enter<BattleEnterState>();
+            _stateMachine.Enter<GameEnterState>();
         }
     }
 }

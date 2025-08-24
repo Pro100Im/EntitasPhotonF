@@ -4,7 +4,7 @@ using System.Collections;
 
 namespace Code.Infrastructure.States.GameStates
 {
-    public class BattleLoopState : IState, IUpdateable
+    public class GameLoopState : IState, IUpdateable
     {
         //private BattleFeature _battleFeature;
 
