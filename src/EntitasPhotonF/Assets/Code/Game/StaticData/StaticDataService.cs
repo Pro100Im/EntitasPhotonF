@@ -17,4 +17,4 @@ namespace Code.Game.StaticData
             
         }     
     }
-}
+} 

@@ -1,11 +1,12 @@
+using Code.Common.Time;
 using Code.Game.StaticData;
+using Code.Infrastructure.AssetManagement;
 using Code.Infrastructure.Helpers;
 using Code.Infrastructure.Loading;
 using Code.Infrastructure.States.Factory;
 using Code.Infrastructure.States.GameStates;
 using Code.Infrastructure.States.StateMachine;
-using System;
-using UnityEngine;
+using Code.Infrastructure.Systems;
 using Zenject;
 
 namespace Code.Infrastructure.Installers
@@ -24,6 +25,8 @@ namespace Code.Infrastructure.Installers
             BindStateMachine();
             BindStateFactory();
             BindGameStates();
+            BindCommonServices();
+            BindAssetManagementServices();
         }
 
         private void BindInputService()
@@ -33,7 +36,7 @@ namespace Code.Infrastructure.Installers
 
         private void BindSystemFactory()
         {
-            
+            Container.Bind<ISystemFactory>().To<SystemFactory>().AsSingle();
         }
 
         private void BindUIFactories()
@@ -43,13 +46,16 @@ namespace Code.Infrastructure.Installers
 
         private void BindContexts()
         {
-            
+            Container.Bind<Contexts>().FromInstance(Contexts.sharedInstance).AsSingle();
+
+            Container.Bind<GameContext>().FromInstance(Contexts.sharedInstance.game).AsSingle();
+            Container.Bind<InputContext>().FromInstance(Contexts.sharedInstance.input).AsSingle();
+            Container.Bind<MetaContext>().FromInstance(Contexts.sharedInstance.meta).AsSingle();
         }
 
         private void BindGameplayServices()
         {
             Container.Bind<IStaticDataService>().To<StaticDataService>().AsSingle();
-            Container.Bind<ISceneLoader>().To<SceneLoader>().AsSingle();
         }
 
         private void BindStateMachine()
@@ -71,6 +77,17 @@ namespace Code.Infrastructure.Installers
             Container.BindInterfacesAndSelfTo<BattleEnterState>().AsSingle();
             Container.BindInterfacesAndSelfTo<BattleLoopState>().AsSingle();
             Container.BindInterfacesAndSelfTo<GameOverState>().AsSingle();
+        }
+
+        private void BindCommonServices()
+        {
+            Container.Bind<ITimeService>().To<UnityTimeService>().AsSingle();
+            Container.Bind<ISceneLoader>().To<SceneLoader>().AsSingle();
+        }
+
+        private void BindAssetManagementServices()
+        {
+            Container.Bind<IAssetProvider>().To<AssetProvider>().AsSingle();
         }
 
         public void Initialize()
