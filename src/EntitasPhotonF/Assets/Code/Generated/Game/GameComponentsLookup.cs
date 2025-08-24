@@ -13,14 +13,15 @@ public static class GameComponentsLookup {
     public const int View = 2;
     public const int ViewPath = 3;
     public const int ViewPrefab = 4;
-    public const int Active = 5;
-    public const int Damage = 6;
-    public const int Id = 7;
-    public const int SpriteRenderer = 8;
-    public const int Transform = 9;
-    public const int WorldPosition = 10;
+    public const int Player = 5;
+    public const int Active = 6;
+    public const int Damage = 7;
+    public const int Id = 8;
+    public const int SpriteRenderer = 9;
+    public const int Transform = 10;
+    public const int WorldPosition = 11;
 
-    public const int TotalComponents = 11;
+    public const int TotalComponents = 12;
 
     public static readonly string[] componentNames = {
         "Destructed",
@@ -28,6 +29,7 @@ public static class GameComponentsLookup {
         "View",
         "ViewPath",
         "ViewPrefab",
+        "Player",
         "Active",
         "Damage",
         "Id",
@@ -42,6 +44,7 @@ public static class GameComponentsLookup {
         typeof(Code.Common.View),
         typeof(Code.Common.ViewPath),
         typeof(Code.Common.ViewPrefab),
+        typeof(Code.Game.Features.Player.PlayerComponent),
         typeof(Code.GamePlay.Common.Active),
         typeof(Code.GamePlay.Common.Damage),
         typeof(Code.GamePlay.Common.Id),
