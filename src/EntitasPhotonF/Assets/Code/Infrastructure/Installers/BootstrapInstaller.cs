@@ -1,5 +1,6 @@
+using Code.Common.StaticData;
 using Code.Common.Time;
-using Code.Game.StaticData;
+using Code.Common.Windows;
 using Code.Infrastructure.AssetManagement;
 using Code.Infrastructure.Helpers;
 using Code.Infrastructure.Loading;
@@ -41,7 +42,7 @@ namespace Code.Infrastructure.Installers
 
         private void BindUIFactories()
         {
-            
+            Container.Bind<IWindowFactory>().To<WindowFactory>().AsSingle();
         }
 
         private void BindContexts()
@@ -55,7 +56,7 @@ namespace Code.Infrastructure.Installers
 
         private void BindGameplayServices()
         {
-            Container.Bind<IStaticDataService>().To<StaticDataService>().AsSingle();
+            
         }
 
         private void BindStateMachine()
@@ -83,6 +84,8 @@ namespace Code.Infrastructure.Installers
         {
             Container.Bind<ITimeService>().To<UnityTimeService>().AsSingle();
             Container.Bind<ISceneLoader>().To<SceneLoader>().AsSingle();
+            Container.Bind<IStaticDataService>().To<StaticDataService>().AsSingle();
+            Container.Bind<IWindowService>().To<WindowService>().AsSingle();
         }
 
         private void BindAssetManagementServices()

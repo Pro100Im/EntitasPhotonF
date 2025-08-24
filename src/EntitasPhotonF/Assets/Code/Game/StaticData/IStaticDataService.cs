@@ -1,10 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using Code.Common.Windows;
 using UnityEngine;
 
-namespace Code.Game.StaticData
+namespace Code.Common.StaticData
 {
     public interface IStaticDataService
     {
-        void LoadAll();
+        public void LoadAll();
+
+        public GameObject GetWindowPrefab(WindowId id);
     }
 }

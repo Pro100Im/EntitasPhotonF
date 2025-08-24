@@ -1,4 +1,4 @@
-﻿using Code.Game.StaticData;
+﻿using Code.Common.StaticData;
 using Code.Infrastructure.States.StateInfrastructure;
 using Code.Infrastructure.States.StateMachine;
 using UnityEngine;
