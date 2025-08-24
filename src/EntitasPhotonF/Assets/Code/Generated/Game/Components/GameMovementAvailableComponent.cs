@@ -8,18 +8,18 @@
 //------------------------------------------------------------------------------
 public partial class GameEntity {
 
-    static readonly Code.Game.Common.Active activeComponent = new Code.Game.Common.Active();
+    static readonly Code.Game.Features.Movement.MovementAvailable movementAvailableComponent = new Code.Game.Features.Movement.MovementAvailable();
 
-    public bool isActive {
-        get { return HasComponent(GameComponentsLookup.Active); }
+    public bool isMovementAvailable {
+        get { return HasComponent(GameComponentsLookup.MovementAvailable); }
         set {
-            if (value != isActive) {
-                var index = GameComponentsLookup.Active;
+            if (value != isMovementAvailable) {
+                var index = GameComponentsLookup.MovementAvailable;
                 if (value) {
                     var componentPool = GetComponentPool(index);
                     var component = componentPool.Count > 0
                             ? componentPool.Pop()
-                            : activeComponent;
+                            : movementAvailableComponent;
 
                     AddComponent(index, component);
                 } else {
@@ -40,17 +40,17 @@ public partial class GameEntity {
 //------------------------------------------------------------------------------
 public sealed partial class GameMatcher {
 
-    static Entitas.IMatcher<GameEntity> _matcherActive;
+    static Entitas.IMatcher<GameEntity> _matcherMovementAvailable;
 
-    public static Entitas.IMatcher<GameEntity> Active {
+    public static Entitas.IMatcher<GameEntity> MovementAvailable {
         get {
-            if (_matcherActive == null) {
-                var matcher = (Entitas.Matcher<GameEntity>)Entitas.Matcher<GameEntity>.AllOf(GameComponentsLookup.Active);
+            if (_matcherMovementAvailable == null) {
+                var matcher = (Entitas.Matcher<GameEntity>)Entitas.Matcher<GameEntity>.AllOf(GameComponentsLookup.MovementAvailable);
                 matcher.componentNames = GameComponentsLookup.componentNames;
-                _matcherActive = matcher;
+                _matcherMovementAvailable = matcher;
             }
 
-            return _matcherActive;
+            return _matcherMovementAvailable;
         }
     }
 }

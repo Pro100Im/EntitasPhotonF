@@ -1,7 +1,7 @@
 using Entitas;
 using System.Collections.Generic;
 
-namespace Code.GamePlay.Input.Systems
+namespace Code.Game.Input.Systems
 {
     public class CleanupInputDestructedSystem : ICleanupSystem
     {

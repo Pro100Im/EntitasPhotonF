@@ -8,19 +8,19 @@
 //------------------------------------------------------------------------------
 public partial class GameEntity {
 
-    public Code.GamePlay.Common.WorldPosition worldPosition { get { return (Code.GamePlay.Common.WorldPosition)GetComponent(GameComponentsLookup.WorldPosition); } }
+    public Code.Game.Common.WorldPosition worldPosition { get { return (Code.Game.Common.WorldPosition)GetComponent(GameComponentsLookup.WorldPosition); } }
     public bool hasWorldPosition { get { return HasComponent(GameComponentsLookup.WorldPosition); } }
 
     public void AddWorldPosition(UnityEngine.Vector3 newValue) {
         var index = GameComponentsLookup.WorldPosition;
-        var component = (Code.GamePlay.Common.WorldPosition)CreateComponent(index, typeof(Code.GamePlay.Common.WorldPosition));
+        var component = (Code.Game.Common.WorldPosition)CreateComponent(index, typeof(Code.Game.Common.WorldPosition));
         component.Value = newValue;
         AddComponent(index, component);
     }
 
     public void ReplaceWorldPosition(UnityEngine.Vector3 newValue) {
         var index = GameComponentsLookup.WorldPosition;
-        var component = (Code.GamePlay.Common.WorldPosition)CreateComponent(index, typeof(Code.GamePlay.Common.WorldPosition));
+        var component = (Code.Game.Common.WorldPosition)CreateComponent(index, typeof(Code.Game.Common.WorldPosition));
         component.Value = newValue;
         ReplaceComponent(index, component);
     }

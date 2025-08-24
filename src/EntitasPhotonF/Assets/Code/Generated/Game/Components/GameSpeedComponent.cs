@@ -8,25 +8,25 @@
 //------------------------------------------------------------------------------
 public partial class GameEntity {
 
-    public Code.Game.Common.Id id { get { return (Code.Game.Common.Id)GetComponent(GameComponentsLookup.Id); } }
-    public bool hasId { get { return HasComponent(GameComponentsLookup.Id); } }
+    public Code.Game.Features.Movement.Speed speed { get { return (Code.Game.Features.Movement.Speed)GetComponent(GameComponentsLookup.Speed); } }
+    public bool hasSpeed { get { return HasComponent(GameComponentsLookup.Speed); } }
 
-    public void AddId(int newValue) {
-        var index = GameComponentsLookup.Id;
-        var component = (Code.Game.Common.Id)CreateComponent(index, typeof(Code.Game.Common.Id));
+    public void AddSpeed(float newValue) {
+        var index = GameComponentsLookup.Speed;
+        var component = (Code.Game.Features.Movement.Speed)CreateComponent(index, typeof(Code.Game.Features.Movement.Speed));
         component.Value = newValue;
         AddComponent(index, component);
     }
 
-    public void ReplaceId(int newValue) {
-        var index = GameComponentsLookup.Id;
-        var component = (Code.Game.Common.Id)CreateComponent(index, typeof(Code.Game.Common.Id));
+    public void ReplaceSpeed(float newValue) {
+        var index = GameComponentsLookup.Speed;
+        var component = (Code.Game.Features.Movement.Speed)CreateComponent(index, typeof(Code.Game.Features.Movement.Speed));
         component.Value = newValue;
         ReplaceComponent(index, component);
     }
 
-    public void RemoveId() {
-        RemoveComponent(GameComponentsLookup.Id);
+    public void RemoveSpeed() {
+        RemoveComponent(GameComponentsLookup.Speed);
     }
 }
 
@@ -40,17 +40,17 @@ public partial class GameEntity {
 //------------------------------------------------------------------------------
 public sealed partial class GameMatcher {
 
-    static Entitas.IMatcher<GameEntity> _matcherId;
+    static Entitas.IMatcher<GameEntity> _matcherSpeed;
 
-    public static Entitas.IMatcher<GameEntity> Id {
+    public static Entitas.IMatcher<GameEntity> Speed {
         get {
-            if (_matcherId == null) {
-                var matcher = (Entitas.Matcher<GameEntity>)Entitas.Matcher<GameEntity>.AllOf(GameComponentsLookup.Id);
+            if (_matcherSpeed == null) {
+                var matcher = (Entitas.Matcher<GameEntity>)Entitas.Matcher<GameEntity>.AllOf(GameComponentsLookup.Speed);
                 matcher.componentNames = GameComponentsLookup.componentNames;
-                _matcherId = matcher;
+                _matcherSpeed = matcher;
             }
 
-            return _matcherId;
+            return _matcherSpeed;
         }
     }
 }

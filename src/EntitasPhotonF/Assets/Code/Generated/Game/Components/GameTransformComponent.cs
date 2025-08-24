@@ -8,19 +8,19 @@
 //------------------------------------------------------------------------------
 public partial class GameEntity {
 
-    public Code.GamePlay.Common.TransformComponent transform { get { return (Code.GamePlay.Common.TransformComponent)GetComponent(GameComponentsLookup.Transform); } }
+    public Code.Game.Common.TransformComponent transform { get { return (Code.Game.Common.TransformComponent)GetComponent(GameComponentsLookup.Transform); } }
     public bool hasTransform { get { return HasComponent(GameComponentsLookup.Transform); } }
 
     public void AddTransform(UnityEngine.Transform newValue) {
         var index = GameComponentsLookup.Transform;
-        var component = (Code.GamePlay.Common.TransformComponent)CreateComponent(index, typeof(Code.GamePlay.Common.TransformComponent));
+        var component = (Code.Game.Common.TransformComponent)CreateComponent(index, typeof(Code.Game.Common.TransformComponent));
         component.Value = newValue;
         AddComponent(index, component);
     }
 
     public void ReplaceTransform(UnityEngine.Transform newValue) {
         var index = GameComponentsLookup.Transform;
-        var component = (Code.GamePlay.Common.TransformComponent)CreateComponent(index, typeof(Code.GamePlay.Common.TransformComponent));
+        var component = (Code.Game.Common.TransformComponent)CreateComponent(index, typeof(Code.Game.Common.TransformComponent));
         component.Value = newValue;
         ReplaceComponent(index, component);
     }

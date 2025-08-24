@@ -20,8 +20,13 @@ public static class GameComponentsLookup {
     public const int SpriteRenderer = 9;
     public const int Transform = 10;
     public const int WorldPosition = 11;
+    public const int Direction = 12;
+    public const int MovementAvailable = 13;
+    public const int Moving = 14;
+    public const int RotationAlignedAlongDirection = 15;
+    public const int Speed = 16;
 
-    public const int TotalComponents = 12;
+    public const int TotalComponents = 17;
 
     public static readonly string[] componentNames = {
         "Destructed",
@@ -35,7 +40,12 @@ public static class GameComponentsLookup {
         "Id",
         "SpriteRenderer",
         "Transform",
-        "WorldPosition"
+        "WorldPosition",
+        "Direction",
+        "MovementAvailable",
+        "Moving",
+        "RotationAlignedAlongDirection",
+        "Speed"
     };
 
     public static readonly System.Type[] componentTypes = {
@@ -45,11 +55,16 @@ public static class GameComponentsLookup {
         typeof(Code.Common.ViewPath),
         typeof(Code.Common.ViewPrefab),
         typeof(Code.Game.Features.Player.PlayerComponent),
-        typeof(Code.GamePlay.Common.Active),
-        typeof(Code.GamePlay.Common.Damage),
-        typeof(Code.GamePlay.Common.Id),
-        typeof(Code.GamePlay.Common.SpriteRendererComponent),
-        typeof(Code.GamePlay.Common.TransformComponent),
-        typeof(Code.GamePlay.Common.WorldPosition)
+        typeof(Code.Game.Common.Active),
+        typeof(Code.Game.Common.Damage),
+        typeof(Code.Game.Common.Id),
+        typeof(Code.Game.Common.SpriteRendererComponent),
+        typeof(Code.Game.Common.TransformComponent),
+        typeof(Code.Game.Common.WorldPosition),
+        typeof(Code.Game.Features.Movement.Direction),
+        typeof(Code.Game.Features.Movement.MovementAvailable),
+        typeof(Code.Game.Features.Movement.Moving),
+        typeof(Code.Game.Features.Movement.RotationAlignedAlongDirection),
+        typeof(Code.Game.Features.Movement.Speed)
     };
 }

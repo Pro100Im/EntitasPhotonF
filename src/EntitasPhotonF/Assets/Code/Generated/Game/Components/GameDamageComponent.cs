@@ -8,19 +8,19 @@
 //------------------------------------------------------------------------------
 public partial class GameEntity {
 
-    public Code.GamePlay.Common.Damage damage { get { return (Code.GamePlay.Common.Damage)GetComponent(GameComponentsLookup.Damage); } }
+    public Code.Game.Common.Damage damage { get { return (Code.Game.Common.Damage)GetComponent(GameComponentsLookup.Damage); } }
     public bool hasDamage { get { return HasComponent(GameComponentsLookup.Damage); } }
 
     public void AddDamage(float newValue) {
         var index = GameComponentsLookup.Damage;
-        var component = (Code.GamePlay.Common.Damage)CreateComponent(index, typeof(Code.GamePlay.Common.Damage));
+        var component = (Code.Game.Common.Damage)CreateComponent(index, typeof(Code.Game.Common.Damage));
         component.Value = newValue;
         AddComponent(index, component);
     }
 
     public void ReplaceDamage(float newValue) {
         var index = GameComponentsLookup.Damage;
-        var component = (Code.GamePlay.Common.Damage)CreateComponent(index, typeof(Code.GamePlay.Common.Damage));
+        var component = (Code.Game.Common.Damage)CreateComponent(index, typeof(Code.Game.Common.Damage));
         component.Value = newValue;
         ReplaceComponent(index, component);
     }

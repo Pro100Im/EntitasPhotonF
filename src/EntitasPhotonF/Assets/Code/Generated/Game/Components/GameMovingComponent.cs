@@ -8,18 +8,18 @@
 //------------------------------------------------------------------------------
 public partial class GameEntity {
 
-    static readonly Code.Game.Common.Active activeComponent = new Code.Game.Common.Active();
+    static readonly Code.Game.Features.Movement.Moving movingComponent = new Code.Game.Features.Movement.Moving();
 
-    public bool isActive {
-        get { return HasComponent(GameComponentsLookup.Active); }
+    public bool isMoving {
+        get { return HasComponent(GameComponentsLookup.Moving); }
         set {
-            if (value != isActive) {
-                var index = GameComponentsLookup.Active;
+            if (value != isMoving) {
+                var index = GameComponentsLookup.Moving;
                 if (value) {
                     var componentPool = GetComponentPool(index);
                     var component = componentPool.Count > 0
                             ? componentPool.Pop()
-                            : activeComponent;
+                            : movingComponent;
 
                     AddComponent(index, component);
                 } else {
@@ -40,17 +40,17 @@ public partial class GameEntity {
 //------------------------------------------------------------------------------
 public sealed partial class GameMatcher {
 
-    static Entitas.IMatcher<GameEntity> _matcherActive;
+    static Entitas.IMatcher<GameEntity> _matcherMoving;
 
-    public static Entitas.IMatcher<GameEntity> Active {
+    public static Entitas.IMatcher<GameEntity> Moving {
         get {
-            if (_matcherActive == null) {
-                var matcher = (Entitas.Matcher<GameEntity>)Entitas.Matcher<GameEntity>.AllOf(GameComponentsLookup.Active);
+            if (_matcherMoving == null) {
+                var matcher = (Entitas.Matcher<GameEntity>)Entitas.Matcher<GameEntity>.AllOf(GameComponentsLookup.Moving);
                 matcher.componentNames = GameComponentsLookup.componentNames;
-                _matcherActive = matcher;
+                _matcherMoving = matcher;
             }
 
-            return _matcherActive;
+            return _matcherMoving;
         }
     }
 }

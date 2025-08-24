@@ -8,18 +8,18 @@
 //------------------------------------------------------------------------------
 public partial class GameEntity {
 
-    static readonly Code.Game.Common.Active activeComponent = new Code.Game.Common.Active();
+    static readonly Code.Game.Features.Movement.RotationAlignedAlongDirection rotationAlignedAlongDirectionComponent = new Code.Game.Features.Movement.RotationAlignedAlongDirection();
 
-    public bool isActive {
-        get { return HasComponent(GameComponentsLookup.Active); }
+    public bool isRotationAlignedAlongDirection {
+        get { return HasComponent(GameComponentsLookup.RotationAlignedAlongDirection); }
         set {
-            if (value != isActive) {
-                var index = GameComponentsLookup.Active;
+            if (value != isRotationAlignedAlongDirection) {
+                var index = GameComponentsLookup.RotationAlignedAlongDirection;
                 if (value) {
                     var componentPool = GetComponentPool(index);
                     var component = componentPool.Count > 0
                             ? componentPool.Pop()
-                            : activeComponent;
+                            : rotationAlignedAlongDirectionComponent;
 
                     AddComponent(index, component);
                 } else {
@@ -40,17 +40,17 @@ public partial class GameEntity {
 //------------------------------------------------------------------------------
 public sealed partial class GameMatcher {
 
-    static Entitas.IMatcher<GameEntity> _matcherActive;
+    static Entitas.IMatcher<GameEntity> _matcherRotationAlignedAlongDirection;
 
-    public static Entitas.IMatcher<GameEntity> Active {
+    public static Entitas.IMatcher<GameEntity> RotationAlignedAlongDirection {
         get {
-            if (_matcherActive == null) {
-                var matcher = (Entitas.Matcher<GameEntity>)Entitas.Matcher<GameEntity>.AllOf(GameComponentsLookup.Active);
+            if (_matcherRotationAlignedAlongDirection == null) {
+                var matcher = (Entitas.Matcher<GameEntity>)Entitas.Matcher<GameEntity>.AllOf(GameComponentsLookup.RotationAlignedAlongDirection);
                 matcher.componentNames = GameComponentsLookup.componentNames;
-                _matcherActive = matcher;
+                _matcherRotationAlignedAlongDirection = matcher;
             }
 
-            return _matcherActive;
+            return _matcherRotationAlignedAlongDirection;
         }
     }
 }
