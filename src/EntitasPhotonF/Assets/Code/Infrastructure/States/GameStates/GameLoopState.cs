@@ -1,47 +1,51 @@
+using Code.Game.Features;
 using Code.Infrastructure.States.StateInfrastructure;
-
-using System.Collections;
+using Code.Infrastructure.Systems;
 
 namespace Code.Infrastructure.States.GameStates
 {
     public class GameLoopState : IState, IUpdateable
     {
-        //private BattleFeature _battleFeature;
+        private readonly ISystemFactory _systems;
 
-        //public BattleLoopState(ISystemFactory systems, GameContext gameContext)
-        //{
-        //    _systems = systems;
-        //    _gameContext = gameContext;
-        //}
+        private readonly GameContext _gameContext;
+
+        private GameFeature _gameFeature;
+
+        public GameLoopState(ISystemFactory systems, GameContext gameContext)
+        {
+            _systems = systems;
+            _gameContext = gameContext;
+        }
 
         public void Enter()
         {
-            //_battleFeature = _systems.Create<BattleFeature>();
-            //_battleFeature.Initialize();
+            _gameFeature = _systems.Create<GameFeature>();
+            _gameFeature.Initialize();
         }
 
         public void Update()
         {
-            //_battleFeature?.Execute();
-            //_battleFeature?.Cleanup();
+            _gameFeature?.Execute();
+            _gameFeature?.Cleanup();
         }
 
         public void Exit()
         {
-            //_battleFeature.DeactivateReactiveSystems();
-            //_battleFeature.ClearReactiveSystems();
+            _gameFeature.DeactivateReactiveSystems();
+            _gameFeature.ClearReactiveSystems();
 
             DestructEntities();
 
-            //_battleFeature.Cleanup();
-            //_battleFeature.TearDown();
-            //_battleFeature = null;
+            _gameFeature.Cleanup();
+            _gameFeature.TearDown();
+            _gameFeature = null;
         }
 
         private void DestructEntities()
         {
-            //foreach(GameEntity entity in _gameContext.GetEntities())
-            //    entity.isDestructed = true;
+            foreach(GameEntity entity in _gameContext.GetEntities())
+                entity.isDestructed = true;
         }
     }
 }

@@ -30,7 +30,7 @@ namespace Code.Meta.UI.HUD
 
         private void EnterBattleLoadingState()
         {
-            _stateMachine.Enter<LoadingBattleState, string>(_gameSceneName);
+            _stateMachine.Enter<LoadingGameState, string>(_gameSceneName);
         }
 
         private void OnDestroy()

@@ -1,6 +1,7 @@
 using Code.Common.StaticData;
 using Code.Common.Time;
 using Code.Common.Windows;
+using Code.Game.Input.Service;
 using Code.Infrastructure.AssetManagement;
 using Code.Infrastructure.Loading;
 using Zenject;
@@ -18,7 +19,7 @@ namespace Code.Infrastructure.Installers
 
         private void BindInputService()
         {
-
+            Container.Bind<IInputService>().To<InputService>().AsSingle();
         }
 
         private void BindCommonServices()
