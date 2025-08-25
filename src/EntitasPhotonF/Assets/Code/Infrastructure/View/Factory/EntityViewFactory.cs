@@ -8,7 +8,6 @@ namespace Code.Infrastructure.View.Factory
     {
         private readonly IAssetProvider _assetProvider;
         private readonly IInstantiator _instantiator;
-        private readonly Vector3 _farAway = new(-999, 999, 0);
 
         public EntityViewFactory(IAssetProvider assetProvider, IInstantiator instantiator)
         {
@@ -21,7 +20,7 @@ namespace Code.Infrastructure.View.Factory
             EntityBehaviour viewPrefab = _assetProvider.LoadAsset<EntityBehaviour>(entity.viewPath.Value);
             EntityBehaviour view = _instantiator.InstantiatePrefabForComponent<EntityBehaviour>(
               viewPrefab,
-              position: _farAway,
+              position: entity.worldPosition.Value,
               Quaternion.identity,
               parentTransform: null);
 
@@ -34,7 +33,7 @@ namespace Code.Infrastructure.View.Factory
         {
             EntityBehaviour view = _instantiator.InstantiatePrefabForComponent<EntityBehaviour>(
               entity.viewPrefab.Value,
-              position: _farAway,
+              position: entity.worldPosition.Value,
               Quaternion.identity,
               parentTransform: null);
 

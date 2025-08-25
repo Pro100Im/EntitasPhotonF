@@ -1,6 +1,8 @@
 using Code.Common.Windows;
+using Code.Game.Features.Player.Factory;
 using Code.Infrastructure.States.Factory;
 using Code.Infrastructure.Systems;
+using Code.Infrastructure.View.Factory;
 using Zenject;
 
 namespace Code.Infrastructure.Installers
@@ -10,8 +12,9 @@ namespace Code.Infrastructure.Installers
         public override void InstallBindings()
         {
             BindSystemFactory();
-            BindUIFactories();
             BindStateFactory();
+            BindUIFactories();
+            BindGameFactories();
         }
 
         private void BindSystemFactory()
@@ -27,6 +30,12 @@ namespace Code.Infrastructure.Installers
         private void BindStateFactory()
         {
             Container.BindInterfacesAndSelfTo<StateFactory>().AsSingle();
+        }
+
+        private void BindGameFactories()
+        {
+            Container.Bind<IEntityViewFactory>().To<EntityViewFactory>().AsSingle();
+            Container.Bind<IPlayerFactory>().To<PlayerFactory>().AsSingle();
         }
     }
 }

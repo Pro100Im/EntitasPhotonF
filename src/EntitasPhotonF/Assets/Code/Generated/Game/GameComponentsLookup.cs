@@ -13,20 +13,21 @@ public static class GameComponentsLookup {
     public const int View = 2;
     public const int ViewPath = 3;
     public const int ViewPrefab = 4;
-    public const int Player = 5;
-    public const int Active = 6;
-    public const int Damage = 7;
-    public const int Id = 8;
-    public const int SpriteRenderer = 9;
-    public const int Transform = 10;
-    public const int WorldPosition = 11;
-    public const int Direction = 12;
-    public const int MovementAvailable = 13;
-    public const int Moving = 14;
-    public const int RotationAlignedAlongDirection = 15;
-    public const int Speed = 16;
+    public const int Active = 5;
+    public const int Damage = 6;
+    public const int Id = 7;
+    public const int SpriteRenderer = 8;
+    public const int Transform = 9;
+    public const int WorldPosition = 10;
+    public const int Direction = 11;
+    public const int MovementAvailable = 12;
+    public const int Moving = 13;
+    public const int RotationAlignedAlongDirection = 14;
+    public const int Speed = 15;
+    public const int PlayerAnimator = 16;
+    public const int Player = 17;
 
-    public const int TotalComponents = 17;
+    public const int TotalComponents = 18;
 
     public static readonly string[] componentNames = {
         "Destructed",
@@ -34,7 +35,6 @@ public static class GameComponentsLookup {
         "View",
         "ViewPath",
         "ViewPrefab",
-        "Player",
         "Active",
         "Damage",
         "Id",
@@ -45,7 +45,9 @@ public static class GameComponentsLookup {
         "MovementAvailable",
         "Moving",
         "RotationAlignedAlongDirection",
-        "Speed"
+        "Speed",
+        "PlayerAnimator",
+        "Player"
     };
 
     public static readonly System.Type[] componentTypes = {
@@ -54,7 +56,6 @@ public static class GameComponentsLookup {
         typeof(Code.Common.View),
         typeof(Code.Common.ViewPath),
         typeof(Code.Common.ViewPrefab),
-        typeof(Code.Game.Features.Player.PlayerComponent),
         typeof(Code.Game.Common.Active),
         typeof(Code.Game.Common.Damage),
         typeof(Code.Game.Common.Id),
@@ -65,6 +66,8 @@ public static class GameComponentsLookup {
         typeof(Code.Game.Features.Movement.MovementAvailable),
         typeof(Code.Game.Features.Movement.Moving),
         typeof(Code.Game.Features.Movement.RotationAlignedAlongDirection),
-        typeof(Code.Game.Features.Movement.Speed)
+        typeof(Code.Game.Features.Movement.Speed),
+        typeof(Code.Game.Features.Player.PlayerAnimatorComponent),
+        typeof(Code.Game.Features.Player.PlayerComponent)
     };
 }
