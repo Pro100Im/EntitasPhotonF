@@ -1,3 +1,4 @@
+using Code.Game.Common.Cameras;
 using Code.Game.Features.Player.Factory;
 using Code.Infrastructure.States.StateInfrastructure;
 using Code.Infrastructure.States.StateMachine;
@@ -18,14 +19,9 @@ namespace Code.Infrastructure.States.GameStates
 
         public override void Enter()
         {
-            PlaceHero();
+            var player = _playerFactory.CreatePlayer(Vector3.zero);
 
             _stateMachine.Enter<GameLoopState>();
-        }
-
-        private void PlaceHero()
-        {
-            _playerFactory.CreatePlayer(Vector3.zero);
         }
     }
 }

@@ -1,6 +1,7 @@
 using Code.Common.StaticData;
 using Code.Common.Time;
 using Code.Common.Windows;
+using Code.Game.Common.Cameras;
 using Code.Game.Input.Service;
 using Code.Infrastructure.AssetManagement;
 using Code.Infrastructure.Identifiers;

@@ -4012,6 +4012,7 @@ GameObject:
   - component: {fileID: 7079836408624174333}
   - component: {fileID: -5029478344034119810}
   - component: {fileID: -8822913598823339130}
+  - component: {fileID: -7474007855923368278}
   - component: {fileID: -7815478998677365788}
   m_Layer: 0
   m_Name: Player
@@ -4160,6 +4161,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EntityView: {fileID: -5029478344034119810}
   _playerAnimator: {fileID: -7815478998677365788}
+--- !u!114 &-7474007855923368278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4373589608342873051}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a05134c594a6494d9f8c83798b4783ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EntityView: {fileID: -5029478344034119810}
 --- !u!114 &-7815478998677365788
 MonoBehaviour:
   m_ObjectHideFlags: 0
